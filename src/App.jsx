@@ -10,6 +10,7 @@ function App() {
     public: false,
   });
 
+
   function handleFormData(event) {
     const value =
       event.target.type === 'checkbox' ?
@@ -21,9 +22,13 @@ function App() {
     }))
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
     <>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <label htmlFor="author">Autore:</label>
         <input type="text"
           id="author"
