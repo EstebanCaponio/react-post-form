@@ -1,14 +1,17 @@
+import axios from "axios";
 import { useState } from "react"
-
 
 function App() {
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     author: "",
     title: "",
     body: "",
     public: false,
-  });
+  }
+
+
+  const [formData, setFormData] = useState(initialFormData);
 
 
   function handleFormData(event) {
@@ -24,7 +27,12 @@ function App() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    axios.post('https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts', formData)
+      .then((res) => { console.log(res.data) })
+    setFormData(initialFormData);
+
   }
+
 
   return (
     <>
@@ -60,7 +68,7 @@ function App() {
         <input type="checkbox"
           id="public"
           name="public"
-          value={formData.public}
+          checked={formData.public}
           onChange={handleFormData}
         />
         <hr />
