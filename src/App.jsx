@@ -28,7 +28,10 @@ function App() {
   function handleSubmit(event) {
     event.preventDefault();
     axios.post('https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts', formData)
-      .then((res) => { console.log(res.data) })
+      .then((res) => {
+        console.log(res.data)
+        alert('il tuo post è stato caricato con successo')
+      })
     setFormData(initialFormData);
 
   }
